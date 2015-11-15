@@ -12,7 +12,7 @@ int main ()
 	printf("Enter the number of resource types");
 	scanf("%d",resourceType);
 	int numResources[resourceType];//array for number of resource for each type
-	int i=0//itterations
+	int i=0;//itterations
 	while(i<resourceType)//fill aray with the user input
 	{
 		printf("Available resource for resource number %d \n", i+1)
