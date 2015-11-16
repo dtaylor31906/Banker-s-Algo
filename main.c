@@ -3,6 +3,9 @@
 #include<stdlib.h>
 #include<stdio.h>
 
+int need []; // Globally allocated so it can be sized with users input of number of resource types;
+
+
 int main ()
 {
 	int processes;//stores number of processes;
@@ -12,6 +15,7 @@ int main ()
 	printf("Enter the number of resource types");
 	scanf("%d",resourceType);
 	int available[resourceType];//array for number of resource for each type
+	need[resourceType];//just added this allocation in for the function.
 	int i=0;int j=0;//itterations
 	
 	while(i<resourceType)//fill aray with the user input
@@ -57,8 +61,7 @@ int main ()
 //function can be called to calcuate how many resources a process needs to finish and it will calculate that through the allocation matrix and the claim matirx. x is claim matrix and y is the allocation matrix. Need is calculate by claim - allocation. This was just an attempt at the calculation after watching various YouTube videos, so it can be scraped.
 // Here i was thinking , have it randomly specify a process through the pointers. Since the CPU has to do this on its own, i was trying to code it to look at one process and its row of resources need at a time, then send the resulting matrix back to another function that will compare it to the available resources matrix. 
 //Im still working on it tho. But if its too much ill scrap it.
-int need (int *x[][], int *y[][]){
-	int need []; // this may need to be globally allocated;
+int calculateNeed (int *x[][], int *y[][]){
 	int i,j,k;
 //trying to code a loop sequence that iterates it all correctly.
 	for (k=0;k<sizeof(need);k++){
