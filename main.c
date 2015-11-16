@@ -55,15 +55,18 @@ int main ()
 }
 
 //function can be called to calcuate how many resources a process needs to finish and it will calculate that through the allocation matrix and the claim matirx. x is claim matrix and y is the allocation matrix. Need is calculate by claim - allocation. This was just an attempt at the calculation after watching various YouTube videos, so it can be scraped.
-
+// Here i was thinking , have it randomly specify a process through the pointers. Since the CPU has to do this on its own, i was trying to code it to look at one process and its row of resources need at a time, then send the resulting matrix back to another function that will compare it to the available resources matrix. 
+//Im still working on it tho. But if its too much ill scrap it.
 int need (int *x[][], int *y[][]){
-	int need []; // this may need to be globally allocated
-	int i,j,; int k = 0;
-	for (i=0;i<processes;i++){
-		for(j=0;j<resourceType;j++){
-			need [k] = x[i][j] - y[i][j];
+	int need []; // this may need to be globally allocated;
+	int i,j,k;
+//trying to code a loop sequence that iterates it all correctly.
+	for (k=0;k<sizeof(need);k++){
+		for (i=0;i<processes;i++){
+			for (j=0;j<resourceType;j++){
+				need [k] = x[i][j] - y[i][j];
+			}
 		}
-		k++;
 	}
 	
 	return need;
