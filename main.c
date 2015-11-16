@@ -53,3 +53,18 @@ int main ()
 
 	}
 }
+
+//function can be called to calcuate how many resources a process needs to finish and it will calculate that through the allocation matrix and the claim matirx. x is claim matrix and y is the allocation matrix. Need is calculate by claim - allocation. This was just an attempt at the calculation after watching various YouTube videos, so it can be scraped.
+
+int need (int *x[][], int *y[][]){
+	int need []; // this may need to be globally allocated
+	int i,j,; int k = 0;
+	for (i=0;i<processes;i++){
+		for(j=0;j<resourceType;j++){
+			need [k] = x[i][j] - y[i][j];
+		}
+		k++;
+	}
+	
+	return need;
+}
