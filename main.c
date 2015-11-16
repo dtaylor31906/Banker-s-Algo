@@ -64,10 +64,11 @@ int main ()
 int calculateNeed (int *x[][], int *y[][]){
 	int i,j,k;
 //trying to code a loop sequence that iterates it all correctly.
-	for (k=0;k<sizeof(need);k++){
-		for (i=0;i<processes;i++){
-			for (j=0;j<resourceType;j++){
-				need [k] = x[i][j] - y[i][j];
+
+	for (i=0;i<processes;i++){
+		for (j=0;j<resourceType;j++){	
+			for (k=0;k<sizeof(need);k++){
+			need [k] = x[i][j] - y[i][j];
 			}
 		}
 	}
