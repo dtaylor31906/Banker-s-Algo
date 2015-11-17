@@ -10,7 +10,6 @@
 int **matrix_create(int r, int c);
 
 
-/* matrix_destroy:  de-allocates the memory occupied by the matrix of int
-    elements referenced by pointer argument m which has rows r and 
-    columns c */
-void matrix_destroy(int **m, int r, int c);
+/* matrix_destroy:  de-allocates the memory occupied by the 2-D array of 
+    int elements referenced by pointer argument m which has rows r */
+void matrix_destroy(int **m, int r);
