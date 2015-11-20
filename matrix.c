@@ -2,26 +2,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* matrix.c:  Our project requires the management of matrix and vector 
+    data structures. This source file provides the implementations of the
+    necessary utilities, which are declared in matrix.h.
+    Author: Jason Franklin. */
 
-/* matrix.c:  Our project requires the dynamic allocation and de-allocation
-    of 2-D arrays which serve as matrix data structures. The functions
-    in this source file manage the work of creating and destroying our
-    2-D arrays. Author: Jason Franklin. */
-
-
-/* matrix_create:  returns a pointer to a dynamically allocated 2-D array
-    of int elements with r rows and c columns; note that the elements
-    of the array are initially undefined */
-int **matrix_create(int r, int c) 
+/* matrix_create:  returns a pointer to a Matrix with r rows and c cols */
+Matrix matrix_create(int r, int c)
 {
-    int **result = (int **) malloc(r * sizeof(int *)); 
+    Matrix result = (Matrix) malloc(r * sizeof(Vector)); 
     if (result == NULL) {
         printf("ERROR: Out of memory\n"); 
         exit(1); 
     }
     int i;
     for (i = 0; i < r; i++) {
-        result[i] = (int *) malloc(c * sizeof(int)); 
+        result[i] = (Vector) malloc(c * sizeof(int)); 
         if (result[i] == NULL) {
             printf("ERROR: Out of memory\n"); 
             exit(1); 
@@ -30,13 +26,23 @@ int **matrix_create(int r, int c)
     return result; 
 }
 
+/* vector_create:  returns a pointer to a Vector of length l */
+Vector vector_create(int l) 
+{
+    return (Vector) malloc(l * sizeof(int)); 
+}
 
-/* matrix_destroy:  de-allocates the memory occupied by the 2-D array of 
-    int elements referenced by pointer argument m which has rows r */
-void matrix_destroy(int **m, int r)
+/* matrix_destroy:  de-allocate heap space occupied by m */
+void matrix_destroy(Matrix m, int r)
 {
     int i; 
     for (i = 0; i < r; i++) 
         free(m[i]); 
     free(m); 
+}
+
+/* vector_destroy:  de-allocate heap space occupied by v */
+void vector_destroy(Vector v) 
+{
+    free(v); 
 }

@@ -1,15 +1,22 @@
-/* matrix.h:  Our project requires the dynamic allocation and de-allocation
-    of 2-D arrays which serve as matrix data structures. This header
-    contains the prototypes for functions, implemented in matrix.c, which
-    manage this work. Author: Jason Franklin. */
+/* matrix.h:  Our project requires the management of matrix and vector 
+    data structures. This header contains the declarations for utilities,
+    implemented in matrix.c, which manage this work.
+    Author: Jason Franklin. */
 
+/* Matrix:  pointer to a 2-D array of int variables */
+typedef int **Matrix; 
 
-/* matrix_create:  returns a pointer to a dynamically allocated 2-D array
-    of int elements with r rows and c columns; note that the elements
-    of the array are initially undefined */
-int **matrix_create(int r, int c);
+/* Vector: pointer to an array of int variables */
+typedef int *Vector; 
 
+/* matrix_create:  returns a pointer to a Matrix with r rows and c cols */
+Matrix matrix_create(int r, int c);
 
-/* matrix_destroy:  de-allocates the memory occupied by the 2-D array of 
-    int elements referenced by pointer argument m which has rows r */
-void matrix_destroy(int **m, int r);
+/* vector_create:  returns a pointer to a Vector of length l */
+Vector vector_create(int l); 
+
+/* matrix_destroy:  de-allocate heap space occupied by m */
+void matrix_destroy(Matrix m, int r);
+
+/* vector_destroy:  de-allocate heap space occupied by v */
+void vector_destroy(Vector v); 

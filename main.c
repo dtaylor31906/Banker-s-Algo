@@ -1,22 +1,36 @@
-//David contribution = !@; Terez Contribution = *TH;Jason Contribution=; think of theese as coment variables to mark our individual contribution for the prof. 
-//!@ 
 #include<stdlib.h>
 #include<stdio.h>
 
-int need []; // Globally allocated so it can be sized with users input of number of resource types;
+
+/* array that stores the number of available instances of each resource */
+int *available; 
+
+/* a 2-D array to store the max resource demand of each process; the rows
+    represent the processes and the columns represent the resource type */
+int **max;
+
+/* a 2-D array to store the number of instances of each resource allocated
+    to each process; rows represent processes */
+int **allocation; 
+
+/* a 2-D array indicating the remaining resource need of each process; 
+    rows represent processes; if need[i][j] == k, then process i may 
+    need up to k more instances of resource j to finish */
+int **need; 
 
 
 int main ()
 {
-	int processes;//stores number of processes;
-	int resourceType;//stores number of resource types
+	int processes;
+	int resourceType;
 	printf("Enter the number of processes: ");
 	scanf("%d", processes);
 	printf("Enter the number of resource types");
 	scanf("%d",resourceType);
-	int available[resourceType];//array for number of resource for each type
-	need[resourceType];//just added this allocation in for the function.
-	int i=0;int j=0;//itterations
+	int available[resourceType];
+	need[resourceType];
+	int i = 0;
+    int j = 0;
 	
 	while(i<resourceType)//fill aray with the user input
 	{
