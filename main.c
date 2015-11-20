@@ -73,16 +73,23 @@ void int calculateNeed (int *x[][], int *y[][]){
 in an unsafe state. If the condition is not met then the system is in a safe state and execute a process.
 */
 	for (i=0;i<processes;i++){
+			int count = 1;//Holds the number of the process currently being checked.
 		for (j=0;j<resourceType;j++){
-			if (need[i][j] > available [j]){
-				printf("The system is in an unsafe state.");
-			} else {
-				printf("The system is in a safe state. Executing..."");
+			int check [resourceType];
+			int check [j] = need[i][j];
+			
+			if (check [j] > available [j]){
+				printf("Process %d cannot run", count);
+				count++;
+				continue;
+			} else if (check [j]) < available [j]) {
+				printf("The system is in a safe state. Process %d is executing...", count);
 				//Code for process execution goes here or in another function
 				//Currently working on that
+			} else {
+				printf("The system is in an unsafe state. No process can reach completion");
 			}
 		}
 	
 	}
 }
-
