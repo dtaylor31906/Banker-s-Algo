@@ -77,7 +77,7 @@ in an unsafe state. If the condition is not met then the system is in a safe sta
 			if (need[i][j] > available [j]){
 				printf("The system is in an unsafe state.");
 			} else {
-				printf("The system is in a safe state. Process %d is executing...");
+				printf("The system is in a safe state. Executing..."");
 				//Code for process execution goes here or in another function
 				//Currently working on that
 			}
