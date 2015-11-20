@@ -81,11 +81,18 @@ in an unsafe state. If the condition is not met then the system is in a safe sta
 			if (check [j] > available [j]){
 				printf("Process %d cannot run", count);
 				count++;
-				continue;
-			} else if (check [j]) < available [j]) {
+				
+			} else if (check !<= available) {
 				printf("The system is in a safe state. Process %d is executing...", count);
 				//Code for process execution goes here or in another function
-				//Currently working on that
+				for (i=0;i<resouceType;i++){
+					available[i]+=check[i];
+				}
+				printf("Process %d has finished and released it's resources.", count);
+				for (i=0;i<resouceType;i++){
+					int id = 1;
+					printf("Available for Resource %d : %d ", id, available[i]);
+				}
 			} else {
 				printf("The system is in an unsafe state. No process can reach completion");
 			}
