@@ -72,20 +72,45 @@ int main ()
 	}
 }
 
-//function can be called to calcuate how many resources a process needs to finish and it will calculate that through the allocation matrix and the claim matirx. x is claim matrix and y is the allocation matrix. Need is calculate by claim - allocation. This was just an attempt at the calculation after watching various YouTube videos, so it can be scraped.
-// Here i was thinking , have it randomly specify a process through the pointers. Since the CPU has to do this on its own, i was trying to code it to look at one process and its row of resources need at a time, then send the resulting matrix back to another function that will compare it to the available resources matrix. 
-//Im still working on it tho. But if its too much ill scrap it.
-int calculateNeed (int *x[][], int *y[][]){
-	int i,j,k;
-//trying to code a loop sequence that iterates it all correctly.
+void int calculateNeed (int *x[][], int *y[][]){
+	int i,j;
+//For loop below will calculate the amount of each resource a need process needs to finish.
 
 	for (i=0;i<processes;i++){
 		for (j=0;j<resourceType;j++){	
 			for (k=0;k<sizeof(need);k++){
-			need [k] = x[i][j] - y[i][j];
+			need [i][j] = x[i][j] - y[i][j];
 			}
 		}
 	}
+/*For loop will check the entire need matrix and if the condition in the if statement is true, the system is currently
+in an unsafe state. If the condition is not met then the system is in a safe state and execute a process.
+*/
+	for (i=0;i<processes;i++){
+			int count = 1;//Holds the number of the process currently being checked.
+		for (j=0;j<resourceType;j++){
+			int check [resourceType];
+			int check [j] = need[i][j];
+			
+			if (check [j] > available [j]){
+				printf("Process %d cannot run", count);
+				count++;
+				
+			} else if (check !<= available) {
+				printf("The system is in a safe state. Process %d is executing...", count);
+				//Code for process execution goes here or in another function
+				for (i=0;i<resouceType;i++){
+					available[i]+=check[i];
+				}
+				printf("Process %d has finished and released it's resources.", count);
+				for (i=0;i<resouceType;i++){
+					int id = 1;
+					printf("Available for Resource %d : %d ", id, available[i]);
+				}
+			} else {
+				printf("The system is in an unsafe state. No process can reach completion");
+			}
+		}
 	
-	return need;
+	}
 }
