@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* init_state.c:  In order to simulate the usage of the Banker's 
+    Algorithm, we must read the initial system state from the user. The
+    function below implements this process and sets up our "system" to
+    be analyzed and changed by other routines. Author(s): Originally
+    written by David Taylor and Terrez Hall. Edited and reorganized by
+    Jason Franklin. */
+
 /* init_state:  responsible for reading input from the user and 
     initializing our simulated system state */
 void init_state(void)
