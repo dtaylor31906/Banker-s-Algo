@@ -21,6 +21,5 @@ void matrix_destroy(Matrix m, int r);
 /* vector_destroy:  de-allocate heap space occupied by v */
 void vector_destroy(Vector v); 
 
-/* vector_lte:  return 1 if v1 <= v2, 0 if not; see README
-    for more information on this routine */
+/* vector_lte:  return 1 if v1 <= v2, 0 if not */
 int vector_lte(Vector a, Vector b, int len);

@@ -1,23 +1,32 @@
 # Banker-s-Algo
 
-### Introduction
+# Most Recent Update! (from Jason)
 
-Okay guys, my most recent update reorganized the code for 
-initializing the system state from user input. You can 
-test the program by compiling with: 
+Guys, 
 
-gcc -ansi -Wall main.c matrix.c init_state.c -o test
+The safety algorithm is now fully implemented. The implementation is in
+"safe.c" and the header, "safe.h" contains the prototype for the "safe()"
+function. When you need to call "safe()," be sure to include this 
+file!
 
-Then, you can run the program to test it with: 
+The other change I made was to reorganize how the "extern" declarations 
+appear in each source file. This improved the readability of the code
+and reduced some redundancy. I would put these declarations in a header,
+but I'm not sure about how that would affect the interpretation of the 
+compiler. This has to do with the order of declarations, which I don't 
+want to worry about, so I'm not going to! It's not really a problem, 
+anyway.
 
-./test 
+All we have left to do is implement an initial randomized allocation
+function that legally allocates resources to processes before they 
+start running. Then, we have to test the safety of this new system
+state, re-allocating until we get a safe state. 
 
-This initializes all of the data structures relevant to the 
-algorithm which are defined as global data in main.c
+Once a safe state is achieved, we start a thread for each row
+in the allocation matrix, and let our system run until the user says 
+stop! This should be an adequate demonstration of the Banker's Algorithm! 
 
-This is a really good start, and I hope to get us running
-with a decent safety algorithm soon. 
+We're cooking with gas now! We should have everything implemented and 
+in working order soon!
 
-I added your guys names in the description of the 
-init_state.c program so that you get credit for writing
-the code as it was before I reorganized it. 
+- Jason

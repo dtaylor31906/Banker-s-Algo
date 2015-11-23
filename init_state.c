@@ -9,18 +9,18 @@
     written by David Taylor and Terrez Hall. Edited and reorganized by
     Jason Franklin. */
 
+/* declare external, global data structures */
+extern int NUMBER_OF_PROCESSES; 
+extern int NUMBER_OF_RESOURCES; 
+extern Vector AVAILABLE;
+extern Matrix MAX; 
+extern Matrix ALLOCATION; 
+extern Matrix NEED;
+
 /* init_state:  responsible for reading input from the user and 
     initializing our simulated system state */
 void init_state(void)
 {
-    /* declare external, global data structures */
-    extern int NUMBER_OF_PROCESSES; 
-    extern int NUMBER_OF_RESOURCES; 
-    extern Vector AVAILABLE;
-    extern Matrix MAX; 
-    extern Matrix ALLOCATION; 
-    extern Matrix NEED;
-
     printf("Banker's Algorithm Simulator!\n"); 
     printf("=============================\n"); 
     printf("Please specify the initial system state.\n"); 
