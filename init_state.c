@@ -50,14 +50,13 @@ void init_state(void)
         for (j = 0; j < NUMBER_OF_RESOURCES; j++) {
             printf("        Proc. %d, res. %d > ", i + 1, j + 1);
             scanf("%d", &MAX[i][j]); 
-            if (MAX[i][j] > AVAILABLE[j]) { /*if the max requested resources are greater than the amount available, exit the program.*/
-                printf("        ERROR: Invalid system state specified. Max resource for this process must be less than or equal to %d\n ", AVAILABLE[j]);
-								j=j-1;
-								continue;
-              
+            if (MAX[i][j] > AVAILABLE[j]) { 
+                printf("        ERROR: Max cannot exceed available.\n");
+                j = j - 1;
+                continue;
             }
             ALLOCATION[i][j] = 0; 
-            NEED[i][j] = MAX[i][j];/*initially the MAX is equal to NEED because no resources has been allocated.*/
+            NEED[i][j] = MAX[i][j];
         }
         if (i < NUMBER_OF_PROCESSES - 1)
             printf("        -------------------\n");
