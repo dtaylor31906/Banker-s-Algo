@@ -46,3 +46,16 @@ void vector_destroy(Vector v)
 {
     free(v); 
 }
+
+/* vector_lte:  return 1 if v1 <= v2, 0 if not; see README
+    for more information on this routine */
+int vector_lte(Vector a, Vector b, int len)
+{
+    int i; 
+    for (i = 0; i < len; i++)
+        if (a[i] > b[i]) break; 
+    if (i == len)
+        return 1; 
+    else 
+        return 0; 
+}
