@@ -62,7 +62,7 @@ void init_state(void)
             printf("        -------------------\n");
     }
 
-    /* notify user of status and wait for the "O.K." to run the system */
+    /* notify user of status and wait for "O.K." to run the system */
     while (getchar() != '\n');
     printf("System initialized. To \"run\" the system, press ENTER.");
     getchar();

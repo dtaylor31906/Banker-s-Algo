@@ -1,3 +1,4 @@
+#include "allocate_random.h"
 #include "init_state.h"
 #include "matrix.h"
 #include "safe.h"
@@ -16,8 +17,15 @@ Matrix NEED;
 
 int main(void)
 {
+    /* clear terminal screen */
+    system("/usr/bin/clear"); 
+
     /* initialize system state from user input */
     init_state(); 
+
+    allocate_random(); 
+
+    display_allocation(); 
 
     /* TEST to see if safe() runs as expected; no 
         resources have been allocated or requested yet, so 
