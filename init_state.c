@@ -9,7 +9,7 @@
     written by David Taylor and Terrez Hall. Edited and reorganized by
     Jason Franklin. */
 
-/* declare external, global data structures */
+/* declare global data structures */
 extern int NUMBER_OF_PROCESSES; 
 extern int NUMBER_OF_RESOURCES; 
 extern Vector AVAILABLE;
@@ -61,9 +61,4 @@ void init_state(void)
         if (i < NUMBER_OF_PROCESSES - 1)
             printf("        -------------------\n");
     }
-
-    /* notify user of status and wait for "O.K." to run the system */
-    while (getchar() != '\n');
-    printf("System initialized. To \"run\" the system, press ENTER.");
-    getchar();
 }

@@ -10,7 +10,8 @@
     system at runtime on which we can run the "safe()" algorithm, which
     is the essence of the Banker's Algorithm. This demonstrates the 
     mechanism by which the Banker's Algorithm successfully avoids
-    deadlock. Author: Jason Franklin. */
+    deadlock. If the user wants to examine multiple runs, the "restore()" 
+    function allows this. Author: Jason Franklin. */
 
 /* declare external, global data structures */
 extern int NUMBER_OF_PROCESSES; 
@@ -27,19 +28,15 @@ void allocate_random(void)
     /* seed the random number generator */
     srand(time(NULL)); 
 
-    /* declare control variables */
+    /* calculate totals */
     int i, j; 
-
-    /* find total number of available resource instances */
     int total_available = 0; 
-    for (i = 0; i < NUMBER_OF_RESOURCES; i++) {
-        total_available += AVAILABLE[i];
+    for (j = 0; j < NUMBER_OF_RESOURCES; j++) {
+        total_available += AVAILABLE[j];
     }
-
-    /* find the total max need of all processes */
     int total_max = 0; 
-    for (j = 0; j < NUMBER_OF_PROCESSES; j++) { 
-        for (i = 0; i < NUMBER_OF_RESOURCES; i++)
+    for (i = 0; i < NUMBER_OF_PROCESSES; i++) { 
+        for (j = 0; j < NUMBER_OF_RESOURCES; j++)
             total_max += MAX[i][j];
     }
 
@@ -47,10 +44,8 @@ void allocate_random(void)
     int limit = (total_available < total_max) ? total_available : total_max; 
     int to_allocate = rand() % (limit + 1);
 
-    /* TODO: Figure out why program sometimes hangs here. */
-
     /* randomly allocate resource instances to processes; use the 
-        "darts at a dartboard" approach */
+        "darts at a dartboard" approach; warning, program can hang here */
     while (to_allocate > 0) {
         i = rand() % NUMBER_OF_PROCESSES;
         j = rand() % NUMBER_OF_RESOURCES; 
@@ -67,32 +62,12 @@ void allocate_random(void)
     resources */
 void restore(void) 
 {
-    /* STUB */
-}
-
-/* display_allocation:  display the system's allocation matrix */
-void display_allocation(void)
-{
     int i, j; 
-
-    /* print top row of our table */
-    printf("     "); 
-    for (i = 0; i < NUMBER_OF_RESOURCES; i++) 
-        printf("| R%-2d ", i); 
-    putchar('\n'); 
-
-    /* print separator */
-    printf("------");
-    for (i = 0; i < NUMBER_OF_RESOURCES; i++) 
-        printf("------"); 
-    putchar('\n'); 
-
-    /* print rows */
     for (i = 0; i < NUMBER_OF_PROCESSES; i++) {
-        printf("Pr%-2d ", i); 
         for (j = 0; j < NUMBER_OF_RESOURCES; j++) {
-            printf("| %-3d ", ALLOCATION[i][j]); 
+            AVAILABLE[j] += ALLOCATION[i][j]; 
+            NEED[i][j] += ALLOCATION[i][j]; 
+            ALLOCATION[i][j] = 0; 
         }
-        putchar('\n'); 
     }
 }

@@ -6,7 +6,7 @@
     allocation requests from processes or threads can be granted
     without resulting in an unsafe system state. This is the 
     essence of how the Banker's Algorithm achieves deadlock avoidance.
-    Author(s): Jason Franklin. */
+    Author: Jason Franklin. */
 
 /* declare external, global data structures */
 extern int NUMBER_OF_PROCESSES; 
