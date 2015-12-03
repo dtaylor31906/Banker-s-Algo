@@ -9,7 +9,7 @@ allowed to "run" the system to view the occurrences of safe and unsafe
 states. 
 
 ## Building and Running
-The program contains a Makefile and can be compiled with <code>make</code>.
+The project directory contains a Makefile and can be compiled with <code>make</code>.
 The resulting executable, "banker," can be run with the <code>./banker
 </code>. Then, follow the prompts and examine the results as 
 desired. This build/execute process works on any system with gcc installed.
