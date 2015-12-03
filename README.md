@@ -12,13 +12,10 @@ states.
 The program contains a Makefile and can be compiled with <code>make</code>.
 The resulting executable, "banker," can be run with the <code>./banker
 </code>. Then, follow the prompts and examine the results as 
-desired. 
-
-For a word on implementation and analysis of results, see the pdf included
-with this repo. 
+desired. This build/execute process works on any system with gcc installed.
 
 ## Further Reading
 The inspiration for this project came from the textbook *Operating Systems
-Concepts, 9 ed.*, by Silberschatz, Galvin, and Gagne. For a full understanding of this
-project and its source code, reading section 7.5.3, pgs. 330-332, is almost
-necessary. 
+Concepts, 9 ed.*, by Silberschatz, Galvin, and Gagne. For a full 
+understanding of this project and its source code, reading section 7.5.3, 
+pgs. 330-332, is almost necessary. 
